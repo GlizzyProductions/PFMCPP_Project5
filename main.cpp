@@ -4,7 +4,7 @@
 
 Create a branch named Part3
 
- the 'new' keyword
+ the 'new' keyword 
 
  1) add #include "LeakedObjectDetector.h" to main
  
