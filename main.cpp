@@ -110,6 +110,7 @@ struct MassageChair
         }
         return startMassage;
     }  
+    JUCE_LEAK_DETECTOR(MassageChair);
 };
 
 
@@ -229,6 +230,7 @@ struct PetCat
             }
             return desiredLength;
         }
+        JUCE_LEAK_DETECTOR(CatCollar);
     };
 
     PetCat();
@@ -258,6 +260,7 @@ struct PetCat
             }
         }
     }
+    JUCE_LEAK_DETECTOR(PetCat);
 };
 
 PetCat::CatCollar::CatCollar() :
@@ -403,6 +406,7 @@ struct Human
             goToAppointment = true;
             return daysLeft;
         }
+        JUCE_LEAK_DETECTOR(HealthStatus);
     };
 
     Human();
@@ -413,6 +417,7 @@ struct Human
     void donateBlood(Human girlfriend, bool giveLeftArm);
     HealthStatus healthStatus;
     void printHumanVars();
+    JUCE_LEAK_DETECTOR(Human);
 };
 
 Human::HealthStatus::HealthStatus() :
@@ -544,6 +549,7 @@ struct CatShelter
     int getCatAdopted(PetCat newCat, Human catAdopter);
 
     void printCatShelterVars();
+    JUCE_LEAK_DETECTOR(CatShelter);
 };
 
 CatShelter::CatShelter()
@@ -614,6 +620,7 @@ struct Hospital
     bool recomendMedication(Human injuredPatient, Human::HealthStatus injuredStatus);
 
     void printHospitalVars();
+    JUCE_LEAK_DETECTOR(Hospital);
 };
 
 Hospital::Hospital() :
