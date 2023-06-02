@@ -669,6 +669,8 @@ void Hospital::printHospitalVars()
  */
 
 #include <iostream>
+#include "LeakedObjectDetector.h"
+
 int main()
 {
     MassageChair osakiOS4000T; //done
