@@ -84,6 +84,7 @@ void Axe::aConstMemberFunction() const { }
  ===============================================================
  */
 #include <iostream>
+#include "LeakedObjectDetector.h"
 
 struct MassageChair
 {
@@ -110,9 +111,8 @@ struct MassageChair
         }
         return startMassage;
     }  
-    JUCE_LEAK_DETECTOR(MassageChair);
+    JUCE_LEAK_DETECTOR(MassageChair)
 };
-
 
 MassageChair::MassageChair() :
 massageDuration(30.00),
@@ -125,6 +125,22 @@ MassageChair::~MassageChair()
 {
     std::cout << "MassageChair destructed!" << std::endl; 
 }
+
+struct MassageChairWrapper
+{
+    MassageChairWrapper(MassageChair* ptr) : 
+    pointToMassageChair(ptr)
+    {
+    
+    }
+
+    ~MassageChairWrapper()
+    {
+        delete pointToMassageChair;
+    }
+
+     MassageChair* pointToMassageChair = nullptr;
+};
 
 void MassageChair::giveMassage(bool startMassage)
 {
@@ -230,7 +246,7 @@ struct PetCat
             }
             return desiredLength;
         }
-        JUCE_LEAK_DETECTOR(CatCollar);
+        JUCE_LEAK_DETECTOR(CatCollar)
     };
 
     PetCat();
@@ -260,7 +276,7 @@ struct PetCat
             }
         }
     }
-    JUCE_LEAK_DETECTOR(PetCat);
+    JUCE_LEAK_DETECTOR(PetCat)
 };
 
 PetCat::CatCollar::CatCollar() :
@@ -275,6 +291,22 @@ PetCat::CatCollar::~CatCollar()
 {
     std::cout << "CatCollar destructed!" << std::endl; 
 }
+
+struct CatCollarWrapper
+{
+    CatCollarWrapper(PetCat::CatCollar* ptr) : 
+    pointToCatCollar(ptr)
+    {
+    
+    }
+
+    ~CatCollarWrapper()
+    {
+        delete pointToCatCollar;
+    }
+
+     PetCat::CatCollar* pointToCatCollar = nullptr;
+};
 
 void PetCat::CatCollar::repelFleas(int repellantStrength, std::string repellantExpiration)
 {
@@ -317,6 +349,8 @@ void PetCat::CatCollar::printCatCollarVars()
     std::cout << "idNumber: " << this->idNumber << "\n\n";
 }
 
+
+
 PetCat::PetCat() :
 ageOfCat(3),
 nameOfPetCat("Doris"),
@@ -329,6 +363,22 @@ PetCat::~PetCat()
 {
     std::cout << "PetCat destructed!" << std::endl;
 }
+
+struct PetCatWrapper
+{
+    PetCatWrapper(PetCat* ptr) : 
+    pointToPetCat(ptr)
+    {
+    
+    }
+
+    ~PetCatWrapper()
+    {
+        delete pointToPetCat;
+    }
+
+     PetCat* pointToPetCat = nullptr;
+};
 
 void PetCat::takeOffCollar(CatCollar newCollar)
 {
@@ -406,7 +456,7 @@ struct Human
             goToAppointment = true;
             return daysLeft;
         }
-        JUCE_LEAK_DETECTOR(HealthStatus);
+        JUCE_LEAK_DETECTOR(HealthStatus)
     };
 
     Human();
@@ -417,7 +467,7 @@ struct Human
     void donateBlood(Human girlfriend, bool giveLeftArm);
     HealthStatus healthStatus;
     void printHumanVars();
-    JUCE_LEAK_DETECTOR(Human);
+    JUCE_LEAK_DETECTOR(Human)
 };
 
 Human::HealthStatus::HealthStatus() :
@@ -431,6 +481,22 @@ Human::HealthStatus::~HealthStatus()
 {
     std::cout << "HealthStatus destructed!" << std::endl;
 }
+
+struct HealthStatusWrapper
+{
+    HealthStatusWrapper(Human::HealthStatus* ptr) : 
+    pointToHealthStatus(ptr)
+    {
+    
+    }
+
+    ~HealthStatusWrapper()
+    {
+        delete pointToHealthStatus;
+    }
+
+     Human::HealthStatus* pointToHealthStatus = nullptr;
+};
 
 Human::Human() :
 bloodType("O Negative"),
@@ -446,6 +512,22 @@ Human::~Human()
 {
     std::cout << "Human destructed!" << std::endl;
 }
+
+struct HumanWrapper
+{
+    HumanWrapper(Human* ptr) : 
+    pointToHuman(ptr)
+    {
+    
+    }
+
+    ~HumanWrapper()
+    {
+        delete pointToHuman;
+    }
+
+     Human* pointToHuman = nullptr;
+};
 
 void Human::HealthStatus::contractSTD(std::string whichSTD, std::string dateContracted)
 {
@@ -549,7 +631,23 @@ struct CatShelter
     int getCatAdopted(PetCat newCat, Human catAdopter);
 
     void printCatShelterVars();
-    JUCE_LEAK_DETECTOR(CatShelter);
+    JUCE_LEAK_DETECTOR(CatShelter)
+};
+
+struct CatShelterWrapper
+{
+    CatShelterWrapper(CatShelter* ptr) : 
+    pointToCatShelter(ptr)
+    {
+    
+    }
+
+    ~CatShelterWrapper()
+    {
+        delete pointToCatShelter;
+    }
+
+     CatShelter* pointToCatShelter = nullptr;
 };
 
 CatShelter::CatShelter()
@@ -620,7 +718,23 @@ struct Hospital
     bool recomendMedication(Human injuredPatient, Human::HealthStatus injuredStatus);
 
     void printHospitalVars();
-    JUCE_LEAK_DETECTOR(Hospital);
+    JUCE_LEAK_DETECTOR(Hospital)
+};
+
+struct HospitalWrapper
+{
+    HospitalWrapper(Hospital* ptr) : 
+    pointToHospital(ptr)
+    {
+    
+    }
+
+    ~HospitalWrapper()
+    {
+        delete pointToHospital;
+    }
+
+     Hospital* pointToHospital = nullptr;
 };
 
 Hospital::Hospital() :
@@ -674,9 +788,6 @@ void Hospital::printHospitalVars()
 
  Wait for my code review.
  */
-
-#include <iostream>
-#include "LeakedObjectDetector.h"
 
 int main()
 {
