@@ -791,17 +791,17 @@ void Hospital::printHospitalVars()
 
 int main()
 {
-    MassageChair osakiOS4000T; //done
-    osakiOS4000T.giveMassage(true);
-    osakiOS4000T.displayTimer(1);
-    osakiOS4000T.playBackgroundSound();
-    std::cout << "osaki0S4000T numOfVibrationControls: " << osakiOS4000T.numOfVibrationControls << " \n";
-    std::cout << "osaki0S4000T appliedPressure: " << osakiOS4000T.appliedPressure << " \n";
-    std::cout << "osaki0S4000T backrestReclineAngle: " << osakiOS4000T.backrestReclineAngle << " \n";
-    std::cout << "osaki0S4000T footrestInclineAngle: " << osakiOS4000T.footrestInclineAngle << " \n";
-    std::cout << "osaki0S4000T massageDuration: " << osakiOS4000T.massageDuration << " \n\n";
+    MassageChairWrapper osakiOS4000T(new MassageChair() ); //done
+    osakiOS4000T.pointToMassageChair->giveMassage(true);
+    osakiOS4000T.pointToMassageChair->displayTimer(1);
+    osakiOS4000T.pointToMassageChair->playBackgroundSound();
+    std::cout << "osaki0S4000T numOfVibrationControls: " << osakiOS4000T.pointToMassageChair->numOfVibrationControls << " \n";
+    std::cout << "osaki0S4000T appliedPressure: " << osakiOS4000T.pointToMassageChair->appliedPressure << " \n";
+    std::cout << "osaki0S4000T backrestReclineAngle: " << osakiOS4000T.pointToMassageChair->backrestReclineAngle << " \n";
+    std::cout << "osaki0S4000T footrestInclineAngle: " << osakiOS4000T.pointToMassageChair->footrestInclineAngle << " \n";
+    std::cout << "osaki0S4000T massageDuration: " << osakiOS4000T.pointToMassageChair->massageDuration << " \n\n";
 
-    osakiOS4000T.printMassageChairVars();
+    osakiOS4000T.pointToMassageChair->printMassageChairVars();
 
     PetCat::CatCollar friscoBreakaway; //done
     friscoBreakaway.repelFleas(10, "12/12/2012");
