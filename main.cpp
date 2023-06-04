@@ -292,22 +292,6 @@ PetCat::CatCollar::~CatCollar()
     std::cout << "CatCollar destructed!" << std::endl; 
 }
 
-struct CatCollarWrapper
-{
-    CatCollarWrapper(PetCat::CatCollar* ptr) : 
-    pointToCatCollar(ptr)
-    {
-    
-    }
-
-    ~CatCollarWrapper()
-    {
-        delete pointToCatCollar;
-    }
-
-     PetCat::CatCollar* pointToCatCollar = nullptr;
-};
-
 void PetCat::CatCollar::repelFleas(int repellantStrength, std::string repellantExpiration)
 {
     std::cout << repellantStrength << "is the repellant strength of this collar\n"; 
@@ -464,7 +448,7 @@ struct Human
 
     void visitDoctor(HealthStatus updateHealthStatus);
     void goToSleep(int howLong);
-    void donateBlood(Human girlfriend, bool giveLeftArm);
+    void donateBlood(Human& girlfriend, bool giveLeftArm);
     HealthStatus healthStatus;
     void printHumanVars();
     JUCE_LEAK_DETECTOR(Human)
@@ -577,7 +561,7 @@ void Human::goToSleep(int howLong)
     std::cout << nameOfHuman << " is going to get " << howLong << " hours of sleep!\n";
 }
 
-void Human::donateBlood(Human girlfriend, bool giveLeftArm)
+void Human::donateBlood(Human& girlfriend, bool giveLeftArm)
 {
     if(giveLeftArm == true)
     {
@@ -626,9 +610,9 @@ struct CatShelter
     CatShelter();
     ~CatShelter();
 
-    int AdmitNewCat(PetCat newCat, PetCat::CatCollar newCollar);
+    int AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar);
 
-    int getCatAdopted(PetCat newCat, Human catAdopter);
+    int getCatAdopted(PetCat& newCat, Human catAdopter);
 
     void printCatShelterVars();
     JUCE_LEAK_DETECTOR(CatShelter)
@@ -661,7 +645,7 @@ CatShelter::~CatShelter()
     msDoris.printPetCatVars();
 }
 
-int CatShelter::AdmitNewCat(PetCat newCat, PetCat::CatCollar newCollar)
+int CatShelter::AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar)
 {   
     if(newCat.hasVaccines == false)
     {
@@ -676,7 +660,7 @@ int CatShelter::AdmitNewCat(PetCat newCat, PetCat::CatCollar newCollar)
     return roomForCat; 
 }
 
-int CatShelter::getCatAdopted(PetCat newCat, Human catAdopter)
+int CatShelter::getCatAdopted(PetCat& newCat, Human catAdopter)
 {
     int ageRequirement = 18;
     int newOwnersAge = catAdopter.ageInYears;
@@ -713,9 +697,9 @@ struct Hospital
     Hospital();
     ~Hospital();
 
-    bool giveXray(Human currentUser, Human::HealthStatus currentStatus);
+    bool giveXray(Human& currentUser, Human::HealthStatus currentStatus);
 
-    bool recomendMedication(Human injuredPatient, Human::HealthStatus injuredStatus);
+    bool recomendMedication(Human& injuredPatient, Human::HealthStatus injuredStatus);
 
     void printHospitalVars();
     JUCE_LEAK_DETECTOR(Hospital)
@@ -749,7 +733,7 @@ Hospital::~Hospital()
     pateint.printHumanVars();
 }
 
-bool Hospital::giveXray(Human currentPatient, Human::HealthStatus currentStatus)
+bool Hospital::giveXray(Human& currentPatient, Human::HealthStatus currentStatus)
 {
     std::cout << currentPatient.nameOfHuman << " Are you experiencing any pain?\n";
         
@@ -760,7 +744,7 @@ bool Hospital::giveXray(Human currentPatient, Human::HealthStatus currentStatus)
     return false;
 }
 
-bool Hospital::recomendMedication(Human injuredPatient, Human::HealthStatus injuredStatus)
+bool Hospital::recomendMedication(Human& injuredPatient, Human::HealthStatus injuredStatus)
 {
     if (injuredStatus.brokenBone == true)
     {
@@ -791,7 +775,7 @@ void Hospital::printHospitalVars()
 
 int main()
 {
-    MassageChairWrapper osakiOS4000T(new MassageChair() ); //done
+    MassageChairWrapper osakiOS4000T( new MassageChair() ); //done
     osakiOS4000T.pointToMassageChair->giveMassage(true);
     osakiOS4000T.pointToMassageChair->displayTimer(1);
     osakiOS4000T.pointToMassageChair->playBackgroundSound();
@@ -818,22 +802,22 @@ int main()
 
     friscoBreakaway.printCatCollarVars();
     
-    PetCat doris; //done
-    doris.knockOverObjects();
-    doris.scratchVisitors();
-    doris.takeOffCollar(friscoBreakaway);
-    doris.catEatFood();
-    std::cout << "numOfEyes: " << doris.numOfEyes << " \n";
-    std::cout << "legnthOfTail: " << doris.legnthOfTail << " \n";
-    std::cout << "furColor: " << doris.furColor << "\n";
-    std::cout << "ageOfCat:  " << doris.ageOfCat << "\n";
-    std::cout << "maleGender:  " << doris.maleGender << "\n";    
-    std::cout << "nameOfPetCat: " << doris.nameOfPetCat << "\n";
-    std::cout << "maleGender: " << doris.maleGender<< "\n";
-    std::cout << "catHungry: " << doris.catHungry << "\n";
-    std::cout << "hasVaccines: " << doris.hasVaccines << "\n\n";
+    PetCatWrapper doris( new PetCat() );
+    doris.pointToPetCat->knockOverObjects();
+    doris.pointToPetCat->scratchVisitors();
+    doris.pointToPetCat->takeOffCollar(friscoBreakaway);
+    doris.pointToPetCat->catEatFood();
+    std::cout << "numOfEyes: " << doris.pointToPetCat->numOfEyes << " \n";
+    std::cout << "legnthOfTail: " << doris.pointToPetCat->legnthOfTail << " \n";
+    std::cout << "furColor: " << doris.pointToPetCat->furColor << "\n";
+    std::cout << "ageOfCat:  " << doris.pointToPetCat->ageOfCat << "\n";
+    std::cout << "maleGender:  " << doris.pointToPetCat->maleGender << "\n";    
+    std::cout << "nameOfPetCat: " << doris.pointToPetCat->nameOfPetCat << "\n";
+    std::cout << "maleGender: " << doris.pointToPetCat->maleGender<< "\n";
+    std::cout << "catHungry: " << doris.pointToPetCat->catHungry << "\n";
+    std::cout << "hasVaccines: " << doris.pointToPetCat->hasVaccines << "\n\n";
 
-    doris.printPetCatVars();
+    doris.pointToPetCat->printPetCatVars();
     
     Human::HealthStatus may5thUpdate; //done
     may5thUpdate.contractSTD("Cold Sore", "10/28/2021");
@@ -851,38 +835,38 @@ int main()
 
     may5thUpdate.printHealthStatusVars();
 
-    Human julianneCabour; //done
-    julianneCabour.nameOfHuman = "Julianne Cabour";
-    julianneCabour.ageInYears = 13;
-    julianneCabour.goToSleep(10);
-    julianneCabour.donateBlood(julianneCabour, false);
-    julianneCabour.visitDoctor(may5thUpdate);
-    std::cout << "ageInYears: " << julianneCabour.ageInYears << " \n";
-    std::cout << "nameOfHuman: " << julianneCabour.nameOfHuman << " \n";
-    std::cout << "ethnicity: " << julianneCabour.ethnicity << "\n";
-    std::cout << "bloodType: " << julianneCabour.bloodType << "\n\n";
-    std::cout << "heightOfHuman: " << julianneCabour.heightOfHuman << "\n";
-    std::cout << "amountOfBlood: " << julianneCabour.amountOfBlood << "\n";
-    std::cout << "dateOfBirth: " << julianneCabour.dateOfBirth << "\n";
-    std::cout << "weightOfHuman: " << julianneCabour.weightOfHuman << "\n";
-    std::cout << "isAngry: " << julianneCabour.isAngry << "\n";
-    std::cout << "genderMale: " << julianneCabour.genderMale << "\n";
+    HumanWrapper julianneCabour( new Human() ); //done
+    julianneCabour.pointToHuman->nameOfHuman = "Julianne Cabour";
+    julianneCabour.pointToHuman->ageInYears = 13;
+    julianneCabour.pointToHuman->goToSleep(10);
+    julianneCabour.pointToHuman->donateBlood(*julianneCabour.pointToHuman, false);
+    julianneCabour.pointToHuman->visitDoctor(may5thUpdate);
+    std::cout << "ageInYears: " << julianneCabour.pointToHuman->ageInYears << " \n";
+    std::cout << "nameOfHuman: " << julianneCabour.pointToHuman->nameOfHuman << " \n";
+    std::cout << "ethnicity: " << julianneCabour.pointToHuman->ethnicity << "\n";
+    std::cout << "bloodType: " << julianneCabour.pointToHuman->bloodType << "\n\n";
+    std::cout << "heightOfHuman: " << julianneCabour.pointToHuman->heightOfHuman << "\n";
+    std::cout << "amountOfBlood: " << julianneCabour.pointToHuman->amountOfBlood << "\n";
+    std::cout << "dateOfBirth: " << julianneCabour.pointToHuman->dateOfBirth << "\n";
+    std::cout << "weightOfHuman: " << julianneCabour.pointToHuman->weightOfHuman << "\n";
+    std::cout << "isAngry: " << julianneCabour.pointToHuman->isAngry << "\n";
+    std::cout << "genderMale: " << julianneCabour.pointToHuman->genderMale << "\n";
 
-    julianneCabour.printHumanVars();
+    julianneCabour.pointToHuman->printHumanVars();
 
-    CatShelter stIves;
-    stIves.AdmitNewCat(doris, friscoBreakaway);
-    stIves.getCatAdopted(doris, julianneCabour);
-    std::cout << "roomForCat " << stIves.roomForCat << "\n\n";
+    CatShelterWrapper stIves( new CatShelter() );
+    stIves.pointToCatShelter->AdmitNewCat(*doris.pointToPetCat, friscoBreakaway);
+    stIves.pointToCatShelter->getCatAdopted(*doris.pointToPetCat, *julianneCabour.pointToHuman);
+    std::cout << "roomForCat " << stIves.pointToCatShelter->roomForCat << "\n\n";
 
-    stIves.printCatShelterVars();
+    stIves.pointToCatShelter->printCatShelterVars();
 
-    Hospital stJames;
-    stJames.giveXray(julianneCabour, may5thUpdate);
-    stJames.recomendMedication(julianneCabour, may5thUpdate);
-    std::cout << "numOfPatients " << stJames.numOfPatients << "\n\n";
+    HospitalWrapper stJames( new Hospital() );
+    stJames.pointToHospital->giveXray(*julianneCabour.pointToHuman, may5thUpdate);
+    stJames.pointToHospital->recomendMedication(*julianneCabour.pointToHuman, may5thUpdate);
+    std::cout << "numOfPatients " << stJames.pointToHospital->numOfPatients << "\n\n";
 
-    stJames.printHospitalVars();
+    stJames.pointToHospital->printHospitalVars();
 
     std::cout << "good to go!" << std::endl;
 }
