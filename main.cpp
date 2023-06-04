@@ -97,10 +97,10 @@ struct MassageChair
     MassageChair();
     ~MassageChair();
 
-    void giveMassage(bool startMassage);
-    void playBackgroundSound(); 
+    void giveMassage(bool startMassage) const;
+    void playBackgroundSound() const; 
     int displayTimer(int msgDuration); // displays how much time is left on massage.
-    void printMassageChairVars();
+    void printMassageChairVars() const;
     bool startVibration(bool startMassage)
     {
         startMassage == false ? std::cout << "would you like to start a massage?\n" : std::cout <<  "starting\n";
@@ -142,7 +142,7 @@ struct MassageChairWrapper
      MassageChair* pointToMassageChair = nullptr;
 };
 
-void MassageChair::giveMassage(bool startMassage)
+void MassageChair::giveMassage(bool startMassage) const
 {
     if(startMassage == true)
     {
@@ -154,7 +154,7 @@ void MassageChair::giveMassage(bool startMassage)
     }
 }
 
-void MassageChair::playBackgroundSound()
+void MassageChair::playBackgroundSound() const
 {
     std::cout << "Now playing! \n";
 }
@@ -188,7 +188,7 @@ int MassageChair::displayTimer(int msgDuration)
     return msgDuration;
 }
 
-void MassageChair::printMassageChairVars()
+void MassageChair::printMassageChairVars() const
 {
     std::cout << "MassageChair numOfVibrationControls: " << this->numOfVibrationControls << " \n";
     std::cout << "MassageChair appliedPressure: " << this->appliedPressure << " \n";
@@ -227,10 +227,10 @@ struct PetCat
         CatCollar();
         ~CatCollar();
 
-        void repelFleas(int repellantStrength, std::string repellantExpiration);
-        void attachLeash();
+        void repelFleas(const int& repellantStrength, const std::string& repellantExpiration) const;
+        void attachLeash() const;
         int tightenCollar(int bucklePosition);
-        void printCatCollarVars();
+        void printCatCollarVars() const;
         int leashExtend(int desiredLength)
         {
             if(desiredLength > leashLength)
@@ -253,10 +253,10 @@ struct PetCat
     ~PetCat();
 
     void takeOffCollar(CatCollar newCollar);
-    void knockOverObjects();
-    void scratchVisitors();
+    void knockOverObjects()const;
+    void scratchVisitors() const;
     CatCollar replacementCollar;
-    void printPetCatVars();
+    void printPetCatVars() const;
     void catEatFood()
     {
         int nomNomNom = 0;
@@ -292,13 +292,13 @@ PetCat::CatCollar::~CatCollar()
     std::cout << "CatCollar destructed!" << std::endl; 
 }
 
-void PetCat::CatCollar::repelFleas(int repellantStrength, std::string repellantExpiration)
+void PetCat::CatCollar::repelFleas(const int& repellantStrength, const std::string& repellantExpiration) const
 {
     std::cout << repellantStrength << "is the repellant strength of this collar\n"; 
     std::cout << repellantExpiration << "is the expiration date\n";
 }
 
-void PetCat::CatCollar::attachLeash()
+void PetCat::CatCollar::attachLeash() const
 {
     std::cout << "Now attaching leash...\n";
     
@@ -322,7 +322,7 @@ int PetCat::CatCollar::tightenCollar(int bucklePosition)
     return bucklePosition;
 }
 
-void PetCat::CatCollar::printCatCollarVars()
+void PetCat::CatCollar::printCatCollarVars() const
 {
     std::cout << "materialOfCollar: " << this->materialOfCollar << " \n";
     std::cout << "collarMeasurement: " << this->collarMeasurement << " \n";
@@ -368,17 +368,17 @@ void PetCat::takeOffCollar(CatCollar newCollar)
     replacementCollar = newCollar;
 }
 
-void PetCat::knockOverObjects()
+void PetCat::knockOverObjects() const
 {
     std::cout << nameOfPetCat << " has knock over an Object\n";
 }
 
-void PetCat::scratchVisitors()
+void PetCat::scratchVisitors() const
 {
     std::cout << nameOfPetCat << " has scratched a visitor\n";
 }
 
-void PetCat::printPetCatVars()
+void PetCat::printPetCatVars() const
 {
     std::cout << "numOfEyes: " << this->numOfEyes << " \n";
     std::cout << "legnthOfTail: " << this->legnthOfTail << " \n";
@@ -423,10 +423,10 @@ struct Human
         HealthStatus();
         ~HealthStatus();
 
-        void contractSTD(std::string whichSTD, std::string dateContracted);
-        void developeHealthCondition(bool isHereditary, std::string knownSymptoms, std::string conditionName);
+        void contractSTD(std::string whichSTD, std::string dateContracted) const;
+        void developeHealthCondition(const bool& isHereditary, std::string knownSymptoms, std::string conditionName) const;
         void scheduleCheckUp(std::string returnDate, bool sameDoctor);
-        void printHealthStatusVars();
+        void printHealthStatusVars() const;
         int countdownNextVisit(int daysSinceLastVisit)
         {
             int daysLeft = 365 - daysSinceLastVisit;
@@ -445,10 +445,10 @@ struct Human
     ~Human();
 
     void visitDoctor(HealthStatus updateHealthStatus);
-    void goToSleep(int howLong);
+    void goToSleep(int howLong) const;
     void donateBlood(Human& girlfriend, bool giveLeftArm);
     HealthStatus healthStatus;
-    void printHumanVars();
+    void printHumanVars() const;
     JUCE_LEAK_DETECTOR(Human)
 };
 
@@ -511,12 +511,12 @@ struct HumanWrapper
      Human* pointToHuman = nullptr;
 };
 
-void Human::HealthStatus::contractSTD(std::string whichSTD, std::string dateContracted)
+void Human::HealthStatus::contractSTD(std::string whichSTD, std::string dateContracted) const
 {
     std::cout << "Your tested positive for the folling STD " << whichSTD << " which was contracted on" << dateContracted <<" \n";
 }
 
-void Human::HealthStatus::developeHealthCondition(bool isHereditary, std::string knownSymptoms, std::string conditionName)
+void Human::HealthStatus::developeHealthCondition(const bool& isHereditary, std::string knownSymptoms, std::string conditionName) const
 {
     std::cout << "You have noticed having" << knownSymptoms << " \n";
     std::cout << "which are symptoms of " << conditionName << " \n";
@@ -530,7 +530,7 @@ void Human::HealthStatus::scheduleCheckUp(std::string returnDate, bool sameDocto
     sameDoctor = true;
 }
 
-void Human::HealthStatus::printHealthStatusVars()
+void Human::HealthStatus::printHealthStatusVars() const
 {
     std::cout << "numOfHealthComplications: " << this->numOfHealthComplications << " \n";
     std::cout << "chronicDiseasesPresent: " << this->chronicDiseasesPresent << " \n";
@@ -554,7 +554,7 @@ void Human::visitDoctor(HealthStatus updateHealthStatus)
     updateHealthStatus.goToAppointment = false;
 }
 
-void Human::goToSleep(int howLong)
+void Human::goToSleep(int howLong) const
 {
     std::cout << nameOfHuman << " is going to get " << howLong << " hours of sleep!\n";
 }
@@ -580,7 +580,7 @@ void Human::donateBlood(Human& girlfriend, bool giveLeftArm)
     std::cout << "all done, go home\n";
 }
 
-void Human::printHumanVars()
+void Human::printHumanVars() const
 {
     std::cout << "ageInYears: " << this->ageInYears << " \n";
     std::cout << "nameOfHuman: " << this->nameOfHuman << " \n";
@@ -610,9 +610,9 @@ struct CatShelter
 
     int AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar);
 
-    int getCatAdopted(PetCat& newCat, Human catAdopter);
+    int getCatAdopted(const PetCat& newCat, const Human catAdopter);
 
-    void printCatShelterVars();
+    void printCatShelterVars() const;
     JUCE_LEAK_DETECTOR(CatShelter)
 };
 
@@ -658,7 +658,7 @@ int CatShelter::AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar)
     return roomForCat; 
 }
 
-int CatShelter::getCatAdopted(PetCat& newCat, Human catAdopter)
+int CatShelter::getCatAdopted(const PetCat& newCat, const Human catAdopter)
 {
     int ageRequirement = 18;
     int newOwnersAge = catAdopter.ageInYears;
@@ -676,7 +676,7 @@ int CatShelter::getCatAdopted(PetCat& newCat, Human catAdopter)
     return roomForCat;
 }
 
-void CatShelter::printCatShelterVars()
+void CatShelter::printCatShelterVars() const
 {
     std::cout << "roomForCat " << this->roomForCat << "\n\n";
 }
@@ -695,11 +695,11 @@ struct Hospital
     Hospital();
     ~Hospital();
 
-    bool giveXray(Human& currentUser, Human::HealthStatus currentStatus);
+    bool giveXray(const Human& currentUser, const Human::HealthStatus currentStatus) const;
 
-    bool recomendMedication(Human& injuredPatient, Human::HealthStatus injuredStatus);
+    bool recomendMedication(const Human& injuredPatient, const Human::HealthStatus injuredStatus) const;
 
-    void printHospitalVars();
+    void printHospitalVars() const;
     JUCE_LEAK_DETECTOR(Hospital)
 };
 
@@ -731,7 +731,7 @@ Hospital::~Hospital()
     pateint.printHumanVars();
 }
 
-bool Hospital::giveXray(Human& currentPatient, Human::HealthStatus currentStatus)
+bool Hospital::giveXray(const Human& currentPatient, const Human::HealthStatus currentStatus) const
 {
     std::cout << currentPatient.nameOfHuman << " Are you experiencing any pain?\n";
         
@@ -742,7 +742,7 @@ bool Hospital::giveXray(Human& currentPatient, Human::HealthStatus currentStatus
     return false;
 }
 
-bool Hospital::recomendMedication(Human& injuredPatient, Human::HealthStatus injuredStatus)
+bool Hospital::recomendMedication(const Human& injuredPatient, const Human::HealthStatus injuredStatus) const
 {
     if (injuredStatus.brokenBone == true)
     {
@@ -752,7 +752,7 @@ bool Hospital::recomendMedication(Human& injuredPatient, Human::HealthStatus inj
     return false;
 }
 
-void Hospital::printHospitalVars()
+void Hospital::printHospitalVars() const
 {
     std::cout << "numOfPatients " << this->numOfPatients << "\n\n";
 }
