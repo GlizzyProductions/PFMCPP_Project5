@@ -333,8 +333,6 @@ void PetCat::CatCollar::printCatCollarVars()
     std::cout << "idNumber: " << this->idNumber << "\n\n";
 }
 
-
-
 PetCat::PetCat() :
 ageOfCat(3),
 nameOfPetCat("Doris"),
