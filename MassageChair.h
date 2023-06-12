@@ -11,9 +11,9 @@ struct MassageChair
     MassageChair();
     ~MassageChair();
 
-    void giveMassage(bool startMassage) const;
+    void giveMassage(const bool startMassage) const;
     void playBackgroundSound() const; 
-    int displayTimer(int msgDuration); // displays how much time is left on massage.
+    int displayTimer(int msgDuration) const; // displays how much time is left on massage.
     void printMassageChairVars() const;
     bool startVibration(bool startMassage);
     JUCE_LEAK_DETECTOR(MassageChair)

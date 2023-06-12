@@ -12,7 +12,7 @@ MassageChair::~MassageChair()
     std::cout << "MassageChair destructed!" << std::endl; 
 }
 
-void MassageChair::giveMassage(bool startMassage) const
+void MassageChair::giveMassage(const bool startMassage) const
 {
     if(startMassage == true)
     {
@@ -29,7 +29,7 @@ void MassageChair::playBackgroundSound() const
     std::cout << "Now playing! \n";
 }
 
-int MassageChair::displayTimer(int msgDuration)
+int MassageChair::displayTimer(int msgDuration) const
 {
     std::cout << "now counting down from " << msgDuration << "minuntes\n";
     int secs = 60, mins = msgDuration;
@@ -69,11 +69,11 @@ void MassageChair::printMassageChairVars() const
 
 bool MassageChair::startVibration(bool startMassage)
 {
-        startMassage == false ? std::cout << "would you like to start a massage?\n" : std::cout <<  "starting\n";
-        while(startMassage == true)
-        {
-            --massageDuration;
-            startMassage = (massageDuration < 0.1);
-        }
-        return startMassage;
+    startMassage == false ? std::cout << "would you like to start a massage?\n" : std::cout <<  "starting\n";
+    while(startMassage == true)
+    {
+        --massageDuration;
+        startMassage = (massageDuration < 0.1);
+    }
+    return startMassage;
 }
