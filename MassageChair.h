@@ -16,6 +16,5 @@ struct MassageChair
     int displayTimer(int msgDuration); // displays how much time is left on massage.
     void printMassageChairVars() const;
     bool startVibration(bool startMassage);
-      
     JUCE_LEAK_DETECTOR(MassageChair)
 };

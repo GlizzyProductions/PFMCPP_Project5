@@ -30,7 +30,6 @@ struct PetCat
         int tightenCollar(int bucklePosition);
         void printCatCollarVars() const;
         int leashExtend(int desiredLength);
-
         JUCE_LEAK_DETECTOR(CatCollar)
     };
 
@@ -43,6 +42,5 @@ struct PetCat
     CatCollar replacementCollar;
     void printPetCatVars() const;
     void catEatFood();
-
     JUCE_LEAK_DETECTOR(PetCat)
 };

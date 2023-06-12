@@ -1,6 +1,7 @@
 #pragma once
 #include "MassageChair.h"
-#include "PetCat.h"
+#include "CatShelter.h"
+#include "Hospital.h"
 
 struct MassageChairWrapper
 {
@@ -33,3 +34,70 @@ struct PetCatWrapper
 
      PetCat* pointToPetCat = nullptr;
 };
+
+struct HealthStatusWrapper
+{
+    HealthStatusWrapper(Human::HealthStatus* ptr) : 
+    pointToHealthStatus(ptr)
+    {
+    
+    }
+
+    ~HealthStatusWrapper()
+    {
+        delete pointToHealthStatus;
+    }
+
+     Human::HealthStatus* pointToHealthStatus = nullptr;
+};
+
+struct HumanWrapper
+{
+    HumanWrapper(Human* ptr) : 
+    pointToHuman(ptr)
+    {
+    
+    }
+
+    ~HumanWrapper()
+    {
+        delete pointToHuman;
+    }
+
+     Human* pointToHuman = nullptr;
+};
+
+struct CatShelterWrapper
+{
+    CatShelterWrapper(CatShelter* ptr) : 
+    pointToCatShelter(ptr)
+    {
+    
+    }
+
+    ~CatShelterWrapper()
+    {
+        delete pointToCatShelter;
+    }
+
+     CatShelter* pointToCatShelter = nullptr;
+};
+
+struct HospitalWrapper
+{
+    HospitalWrapper(Hospital* ptr) : 
+    pointToHospital(ptr)
+    {
+    
+    }
+
+    ~HospitalWrapper()
+    {
+        delete pointToHospital;
+    }
+
+     Hospital* pointToHospital = nullptr;
+};
+
+
+
