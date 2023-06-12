@@ -15,8 +15,7 @@ struct MassageChairWrapper
     {
         delete pointToMassageChair;
     }
-
-     MassageChair* pointToMassageChair = nullptr;
+    MassageChair* pointToMassageChair = nullptr;
 };
 
 struct PetCatWrapper
@@ -31,8 +30,7 @@ struct PetCatWrapper
     {
         delete pointToPetCat;
     }
-
-     PetCat* pointToPetCat = nullptr;
+    PetCat* pointToPetCat = nullptr;
 };
 
 struct HealthStatusWrapper
@@ -63,8 +61,7 @@ struct HumanWrapper
     {
         delete pointToHuman;
     }
-
-     Human* pointToHuman = nullptr;
+    Human* pointToHuman = nullptr;
 };
 
 struct CatShelterWrapper
@@ -79,8 +76,7 @@ struct CatShelterWrapper
     {
         delete pointToCatShelter;
     }
-
-     CatShelter* pointToCatShelter = nullptr;
+    CatShelter* pointToCatShelter = nullptr;
 };
 
 struct HospitalWrapper
@@ -95,9 +91,6 @@ struct HospitalWrapper
     {
         delete pointToHospital;
     }
-
-     Hospital* pointToHospital = nullptr;
+    Hospital* pointToHospital = nullptr;
 };
-
-
 
