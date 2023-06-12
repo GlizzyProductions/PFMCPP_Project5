@@ -72,33 +72,7 @@ void Axe::aConstMemberFunction() const { }
 #include <iostream>
 #include "LeakedObjectDetector.h"
 
-struct MassageChair
-{
-    int numOfVibrationControls {9};
-    int appliedPressure {10}; //measured in PSI
-    float backrestReclineAngle = 34.6f;
-    double massageDuration;
-    float footrestInclineAngle;
 
-    MassageChair();
-    ~MassageChair();
-
-    void giveMassage(bool startMassage) const;
-    void playBackgroundSound() const; 
-    int displayTimer(int msgDuration); // displays how much time is left on massage.
-    void printMassageChairVars() const;
-    bool startVibration(bool startMassage)
-    {
-        startMassage == false ? std::cout << "would you like to start a massage?\n" : std::cout <<  "starting\n";
-        while(startMassage == true)
-        {
-            --massageDuration;
-            startMassage = (massageDuration < 0.1);
-        }
-        return startMassage;
-    }  
-    JUCE_LEAK_DETECTOR(MassageChair)
-};
 
 MassageChair::MassageChair() :
 massageDuration(30.00),
@@ -182,6 +156,18 @@ void MassageChair::printMassageChairVars() const
     std::cout << "MassageChair footrestInclineAngle: " << this->footrestInclineAngle << "\n";
     std::cout << "MassageChair massageDuration:  " << this->massageDuration << "\n\n";
 }
+
+bool MassageChair::startVibration(bool startMassage)
+{
+        startMassage == false ? std::cout << "would you like to start a massage?\n" : std::cout <<  "starting\n";
+        while(startMassage == true)
+        {
+            --massageDuration;
+            startMassage = (massageDuration < 0.1);
+        }
+        return startMassage;
+}
+
 
 /*
  copied UDT 2:
