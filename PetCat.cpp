@@ -29,7 +29,7 @@ void PetCat::CatCollar::attachLeash() const
     }
 }
 
-int PetCat::CatCollar::tightenCollar(int bucklePosition)
+int PetCat::CatCollar::tightenCollar(int bucklePosition) const
 { 
     if(hasCollarBuckle == true && bucklePosition <= numOfHolesForBuckle)
     {
@@ -54,7 +54,7 @@ void PetCat::CatCollar::printCatCollarVars() const
     std::cout << "idNumber: " << this->idNumber << "\n\n";
 }
 
-int PetCat::CatCollar::leashExtend(int desiredLength)
+int PetCat::CatCollar::leashExtend(const int desiredLength) const
 {
     if(desiredLength > leashLength)
     {
@@ -123,7 +123,7 @@ void PetCat::catEatFood()
             ++nomNomNom;
             std::cout << "nom nom nom... im still hungry!\n";
                 
-             if(nomNomNom > 3)
+            if(nomNomNom > 3)
             {
                 std::cout << "Meow... I'm Full now.\n";
                 catHungry = false;

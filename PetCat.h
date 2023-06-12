@@ -27,9 +27,9 @@ struct PetCat
 
         void repelFleas(const int& repellantStrength, const std::string& repellantExpiration) const;
         void attachLeash() const;
-        int tightenCollar(int bucklePosition);
+        int tightenCollar(int bucklePosition) const;
         void printCatCollarVars() const;
-        int leashExtend(int desiredLength);
+        int leashExtend(const int desiredLength) const;
         JUCE_LEAK_DETECTOR(CatCollar)
     };
 
