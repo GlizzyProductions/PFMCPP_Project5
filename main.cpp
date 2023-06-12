@@ -88,6 +88,7 @@ struct Human;
 struct CatShelter;
 struct Hospital;
 
+
 int main()
 {
     MassageChairWrapper osakiOS4000T( new MassageChair() ); //done

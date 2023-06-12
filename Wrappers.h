@@ -5,91 +5,43 @@
 
 struct MassageChairWrapper
 {
-    MassageChairWrapper(MassageChair* ptr) : 
-    pointToMassageChair(ptr)
-    {
-    
-    }
-
-    ~MassageChairWrapper()
-    {
-        delete pointToMassageChair;
-    }
+    MassageChairWrapper(MassageChair* ptr);
+    ~MassageChairWrapper();
     MassageChair* pointToMassageChair = nullptr;
 };
 
 struct PetCatWrapper
 {
-    PetCatWrapper(PetCat* ptr) : 
-    pointToPetCat(ptr)
-    {
-    
-    }
-
-    ~PetCatWrapper()
-    {
-        delete pointToPetCat;
-    }
+    PetCatWrapper(PetCat* ptr);
+    ~PetCatWrapper();
     PetCat* pointToPetCat = nullptr;
 };
 
 struct HealthStatusWrapper
 {
-    HealthStatusWrapper(Human::HealthStatus* ptr) : 
-    pointToHealthStatus(ptr)
-    {
-    
-    }
-
-    ~HealthStatusWrapper()
-    {
-        delete pointToHealthStatus;
-    }
-     Human::HealthStatus* pointToHealthStatus = nullptr;
+    HealthStatusWrapper(Human::HealthStatus* ptr);
+    ~HealthStatusWrapper();
+    Human::HealthStatus* pointToHealthStatus = nullptr;
 };
 
 struct HumanWrapper
 {
-    HumanWrapper(Human* ptr) : 
-    pointToHuman(ptr)
-    {
-    
-    }
-
-    ~HumanWrapper()
-    {
-        delete pointToHuman;
-    }
+    HumanWrapper(Human* ptr);
+    ~HumanWrapper();
     Human* pointToHuman = nullptr;
 };
 
 struct CatShelterWrapper
 {
-    CatShelterWrapper(CatShelter* ptr) : 
-    pointToCatShelter(ptr)
-    {
-    
-    }
-
-    ~CatShelterWrapper()
-    {
-        delete pointToCatShelter;
-    }
+    CatShelterWrapper(CatShelter* ptr);
+    ~CatShelterWrapper();
     CatShelter* pointToCatShelter = nullptr;
 };
 
 struct HospitalWrapper
 {
-    HospitalWrapper(Hospital* ptr) : 
-    pointToHospital(ptr)
-    {
-    
-    }
-
-    ~HospitalWrapper()
-    {
-        delete pointToHospital;
-    }
+    HospitalWrapper(Hospital* ptr);
+    ~HospitalWrapper();
     Hospital* pointToHospital = nullptr;
 };
 
