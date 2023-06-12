@@ -27,20 +27,20 @@ Human::~Human()
     std::cout << "Human destructed!" << std::endl;
 }
 
-void Human::HealthStatus::contractSTD(std::string whichSTD, std::string dateContracted) const
+void Human::HealthStatus::contractSTD(const std::string whichSTD, const std::string dateContracted) const
 {
     std::cout << "Your tested positive for the folling STD " << whichSTD << " which was contracted on" << dateContracted <<" \n";
 }
 
-void Human::HealthStatus::developeHealthCondition(const bool& isHereditary, std::string knownSymptoms, std::string conditionName) const
+void Human::HealthStatus::developeHealthCondition(const bool& isHereditary, const std::string knownSymptoms, const std::string conditionName) const
 {
     std::cout << "You have noticed having" << knownSymptoms << " \n";
     std::cout << "which are symptoms of " << conditionName << " \n";
     
-    if(isHereditary == true) std::cout << "this condition is hereditary";
+    if(isHereditary == true) std::cout << "this condition is hereditary\n";
 }
 
-void Human::HealthStatus::scheduleCheckUp(std::string returnDate, bool sameDoctor)
+void Human::HealthStatus::scheduleCheckUp(std::string returnDate, bool sameDoctor) const
 {
     returnDate = "Day/Month/Year";
     sameDoctor = true;
@@ -58,7 +58,7 @@ void Human::HealthStatus::printHealthStatusVars() const
     std::cout << "bodyMassIndex:  " << this->bodyMassIndex << "\n\n";
 }
 
-int Human::HealthStatus::countdownNextVisit(int daysSinceLastVisit)
+int Human::HealthStatus::countdownNextVisit(const int daysSinceLastVisit)
 {
     int daysLeft = 365 - daysSinceLastVisit;
             
@@ -82,12 +82,12 @@ void Human::visitDoctor(HealthStatus updateHealthStatus)
     updateHealthStatus.goToAppointment = false;
 }
 
-void Human::goToSleep(int howLong) const
+void Human::goToSleep(const int howLong) const
 {
     std::cout << nameOfHuman << " is going to get " << howLong << " hours of sleep!\n";
 }
 
-void Human::donateBlood(Human& girlfriend, bool giveLeftArm)
+void Human::donateBlood(Human& girlfriend, const bool giveLeftArm) const
 {
     if(giveLeftArm == true)
     {

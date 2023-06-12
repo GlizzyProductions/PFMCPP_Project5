@@ -27,11 +27,11 @@ struct Human
         HealthStatus();
         ~HealthStatus();
 
-        void contractSTD(std::string whichSTD, std::string dateContracted) const;
-        void developeHealthCondition(const bool& isHereditary, std::string knownSymptoms, std::string conditionName) const;
-        void scheduleCheckUp(std::string returnDate, bool sameDoctor);
+        void contractSTD(const std::string whichSTD, const std::string dateContracted) const;
+        void developeHealthCondition(const bool& isHereditary, const std::string knownSymptoms, const std::string conditionName) const;
+        void scheduleCheckUp(std::string returnDate, bool sameDoctor) const;
         void printHealthStatusVars() const;
-        int countdownNextVisit(int daysSinceLastVisit);
+        int countdownNextVisit(const int daysSinceLastVisit);
         JUCE_LEAK_DETECTOR(HealthStatus)
     };
 
@@ -39,8 +39,8 @@ struct Human
     ~Human();
 
     void visitDoctor(HealthStatus updateHealthStatus);
-    void goToSleep(int howLong) const;
-    void donateBlood(Human& girlfriend, bool giveLeftArm);
+    void goToSleep(const int howLong) const;
+    void donateBlood(Human& girlfriend, const bool giveLeftArm) const;
     HealthStatus healthStatus;
     void printHumanVars() const;
     JUCE_LEAK_DETECTOR(Human)
