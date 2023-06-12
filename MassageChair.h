@@ -1,3 +1,5 @@
+#include "LeakedObjectDetector.h"
+
 struct MassageChair
 {
     int numOfVibrationControls {9};
