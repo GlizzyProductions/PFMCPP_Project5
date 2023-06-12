@@ -91,7 +91,7 @@ void Human::donateBlood(Human& girlfriend, const bool giveLeftArm) const
 {
     if(giveLeftArm == true)
     {
-         std::cout << "you have decided to donate from your left arm\n";
+        std::cout << "you have decided to donate from your left arm\n";
     }
     else
     {

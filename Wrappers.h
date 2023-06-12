@@ -45,7 +45,6 @@ struct HealthStatusWrapper
     {
         delete pointToHealthStatus;
     }
-
      Human::HealthStatus* pointToHealthStatus = nullptr;
 };
 
