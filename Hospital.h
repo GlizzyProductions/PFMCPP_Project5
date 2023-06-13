@@ -1,5 +1,4 @@
 #pragma once
-#include "LeakedObjectDetector.h"
 #include "Human.h"
 
 struct Hospital
