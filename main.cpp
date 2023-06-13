@@ -81,12 +81,16 @@ void Axe::aConstMemberFunction() const { }
 #include <iostream>
 #include "LeakedObjectDetector.h"
 #include "Wrappers.h"
+#include "MassageChair.h"
+#include "Hospital.h"
+#include "CatShelter.h"
 
-struct MassageChair;
+/*struct MassageChair;
 struct PetCat;
 struct Human;
 struct CatShelter;
 struct Hospital;
+*/
 
 
 int main()

@@ -1,6 +1,7 @@
+#pragma once
 #include "LeakedObjectDetector.h"
-#include "Hospital.h"
 #include "PetCat.h"
+#include "Human.h"
 
 struct CatShelter
 {

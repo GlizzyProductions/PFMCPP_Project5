@@ -1,4 +1,7 @@
 #include "Wrappers.h"
+#include "MassageChair.h"
+#include "CatShelter.h"
+#include "Hospital.h"
 
 MassageChairWrapper::MassageChairWrapper(MassageChair* ptr) :
 pointToMassageChair(ptr) { }

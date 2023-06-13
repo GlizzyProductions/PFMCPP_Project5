@@ -1,7 +1,13 @@
 #pragma once
-#include "MassageChair.h"
-#include "CatShelter.h"
-#include "Hospital.h"
+#include "Human.h"
+
+struct MassageChair;
+struct PetCat;
+struct Hospital;
+struct CatShelter;
+struct Hospital;
+
+
 
 struct MassageChairWrapper
 {
