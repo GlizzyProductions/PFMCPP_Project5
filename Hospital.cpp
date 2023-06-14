@@ -3,7 +3,7 @@
 Hospital::Hospital() :
 numOfPatients(1000)
 {
-     std::cout << "Hospital is being constructed\n";  
+    std::cout << "Hospital is being constructed\n";  
 }
 
 Hospital::~Hospital()
