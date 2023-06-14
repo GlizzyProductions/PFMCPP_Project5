@@ -1,4 +1,5 @@
 #include "CatShelter.h"
+#include "Human.h"
 
 CatShelter::CatShelter()
 {
@@ -26,7 +27,7 @@ int CatShelter::AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar)
     return roomForCat; 
 }
 
-int CatShelter::getCatAdopted(const PetCat& newCat, const Human catAdopter)
+int CatShelter::getCatAdopted(const PetCat& newCat, const Human& catAdopter)
 {
     int ageRequirement = 18;
     int newOwnersAge = catAdopter.ageInYears;

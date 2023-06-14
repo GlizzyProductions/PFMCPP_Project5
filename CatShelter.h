@@ -1,7 +1,7 @@
 #pragma once
 #include "PetCat.h"
-#include "Human.h"
 
+struct Human;
 struct CatShelter
 {
     PetCat msDoris;
@@ -13,7 +13,7 @@ struct CatShelter
 
     int AdmitNewCat(PetCat& newCat, PetCat::CatCollar newCollar);
 
-    int getCatAdopted(const PetCat& newCat, const Human catAdopter);
+    int getCatAdopted(const PetCat& newCat, const Human& catAdopter);
 
     void printCatShelterVars() const;
     JUCE_LEAK_DETECTOR(CatShelter)
